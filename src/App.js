@@ -1,20 +1,35 @@
-import React from 'react';
-import { Link, Outlet } from 'react-router-dom';
-import './App.scss';
+import Header from 'components/Header';
+import NotFound from 'components/NotFound';
+import React, { useEffect } from 'react';
+import { Outlet, Route, Routes, useLocation, useNavigate } from 'react-router';
 
-// Lazy load - Code splitting
+const Photo = React.lazy(() => import("./features/Photo"));
 
 function App() {
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  useEffect(() => {
+    if (location.pathname === '/') navigate('/photos')
+  }, [location.pathname, navigate])
+
   return (
     <div className="photo-app">
-      <ul>
-        <li><Link to="photo">Go to photo page</Link></li>
-        <li><Link to="photo/add">Go to Add new photo page</Link></li>
-        <li><Link to="photo/123">Go to Edit photo page</Link></li>
-      </ul>
-      {<Outlet />}
+      <Header />
+      <Outlet />
+
+      <Routes>
+        <Route path="photos/*" element={
+          <React.Suspense fallback={<>Loading... </>}>
+            <Photo />
+          </React.Suspense>
+        } />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </div>
   );
 }
+
+
 
 export default App;
