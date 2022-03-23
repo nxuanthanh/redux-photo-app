@@ -1,5 +1,5 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { Button } from 'reactstrap';
 import './RandomPhoto.scss';
 
@@ -46,7 +46,13 @@ function RandomPhoto(props) {
         </Button>
       </div>
       <div className="random-photo__photo">
-        {imageUrl && <img src={imageUrl} alt="Ooops... not found. Please click random again!" />}
+        {imageUrl && (
+          <img
+            src={imageUrl}
+            alt="Ooops... not found. Please click random again!"
+            onError={handleRandomPhotoClick}
+          />
+        )}
       </div>
     </div>
   );
