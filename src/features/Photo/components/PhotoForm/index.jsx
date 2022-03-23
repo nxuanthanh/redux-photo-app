@@ -61,8 +61,7 @@ function PhotoForm(props) {
 
             <FormGroup>
               <Button type="submit" color="primary">
-                {isSubmitting && <Spinner size="sm" />}
-                Add to album
+                {isSubmitting && <Spinner size="sm" />} Add to album
               </Button>
             </FormGroup>
           </Form>
