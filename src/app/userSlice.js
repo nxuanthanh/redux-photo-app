@@ -20,11 +20,12 @@ const userSlice = createSlice({
         },
 
         [getMe.rejected]: (state, action) => {
-            state.loading = true;
+            state.loading = false;
             state.error = action.err;
         },
 
         [getMe.fulfilled]: (state, action) => {
+            state.loading = false;
             state.current = action.payload;
         },
     }

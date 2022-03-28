@@ -1,6 +1,6 @@
-import { addPhoto, updatePhoto } from 'app/photoSlice';
 import Banner from 'components/Banner';
 import PhotoForm from 'features/Photo/components/PhotoForm';
+import { addPhoto, updatePhoto } from 'features/Photo/photoSlice';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router';

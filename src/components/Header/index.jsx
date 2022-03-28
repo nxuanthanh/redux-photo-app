@@ -13,11 +13,11 @@ function Header() {
           <Col xs="auto">
             <a
               className="header__link head  er__title"
-              href="https://youtube.com/easyfrontend"
+              href="https://www.facebook.com/profile.php?id=100017181799314"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Easy Frontend
+              tDev
             </a>
           </Col>
 

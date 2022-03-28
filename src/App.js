@@ -26,8 +26,6 @@ function App() {
   const [productList, setProductList] = useState([]);
   const dispatch = useDispatch();
 
-  console.log(productList)
-
   useEffect(() => {
     if (location.pathname === '/') navigate('/photos')
   }, [location.pathname, navigate])
@@ -42,7 +40,6 @@ function App() {
 
         };
         const response = await productApi.getAll(params);
-        console.log(response);
         setProductList(response.data);
       } catch (error) {
         console.log('Failed to fetch product list: ', error);

@@ -20,10 +20,11 @@ const getFirebaseToken = async () => {
 
         const unregisterAuthObserver = firebase.auth().onAuthStateChanged(async (user) => {
             if (!user) {
+                console.log('huhu')
                 reject(null)
             }
-
-            const token = user.getIdToken()
+            console.log('hii')
+            const token = await user.getIdToken()
             console.log('[AXIOS] Logged in user token: ', token)
             resolve(token)
 
@@ -46,7 +47,7 @@ const axiosClient = axios.create({
 axiosClient.interceptors.request.use(async (config) => {
     // Handle token here ...
 
-    const token = getFirebaseToken()
+    const token = await getFirebaseToken()
     if (token) {
         config.headers.Authorization = `Bearer ${token}`
     }
